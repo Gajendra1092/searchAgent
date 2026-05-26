@@ -149,6 +149,17 @@
             display: none;
         }
 
+        .render-warning {
+            font-size: 0.75rem;
+            color: #d97706;
+            background-color: rgba(217, 119, 6, 0.05);
+            border: 1px solid rgba(217, 119, 6, 0.15);
+            padding: 8px 10px;
+            border-radius: 6px;
+            margin-top: 10px;
+            line-height: 1.4;
+        }
+
         /* Document List */
         .doc-list {
             list-style: none;
@@ -572,6 +583,9 @@
             <input type="file" id="file-input" accept=".pdf,.docx,.txt,.md">
         </div>
         <div class="upload-status" id="upload-status">Uploading...</div>
+        <div class="render-warning">
+            Note: Deployed on Render Free Tier. Uploaded documents will be cleared on the next server restart or inactivity spin-down.
+        </div>
 
         <div class="section-title">Indexed Documents</div>
         <ul class="doc-list" id="doc-list">
