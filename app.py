@@ -1,7 +1,15 @@
-import os
+# Monkeypatch protobuf to bypass call-stack checks in Python 3.13+ / 3.14+
+try:
+    from google._upb import _message as _upb_message
+    _upb_message.Message._CheckCalledFromGeneratedFile = lambda *args, **kwargs: None
+except Exception:
+    pass
 
-# Force pure-Python implementation of protobuf to prevent compatibility errors
-os.environ["PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION"] = "python"
+try:
+    from google.protobuf.pyext import _message as _cpp_message
+    _cpp_message.Message._CheckCalledFromGeneratedFile = lambda *args, **kwargs: None
+except Exception:
+    pass
 
 import streamlit as st
 import tempfile

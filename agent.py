@@ -1,6 +1,16 @@
-import os
-# Force pure-Python implementation of protobuf to prevent compatibility errors
-os.environ["PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION"] = "python"
+# Monkeypatch protobuf to bypass call-stack checks in Python 3.13+ / 3.14+
+try:
+    from google._upb import _message as _upb_message
+    _upb_message.Message._CheckCalledFromGeneratedFile = lambda *args, **kwargs: None
+except Exception:
+    pass
+
+try:
+    from google.protobuf.pyext import _message as _cpp_message
+    _cpp_message.Message._CheckCalledFromGeneratedFile = lambda *args, **kwargs: None
+except Exception:
+    pass
+
 from dotenv import load_dotenv
 from langchain_community.document_loaders import PyPDFLoader, Docx2txtLoader, TextLoader
 from langchain_text_splitters import RecursiveCharacterTextSplitter
