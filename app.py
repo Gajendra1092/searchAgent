@@ -1,5 +1,7 @@
-import streamlit as st
 import os
+os.environ["PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION"] = "python"
+
+import streamlit as st
 import tempfile
 import agent
 from langchain_core.callbacks import BaseCallbackHandler
