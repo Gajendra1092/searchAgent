@@ -1,5 +1,18 @@
 import os
+import sys
+
+# Force pure-Python implementation of protobuf to prevent compatibility errors
 os.environ["PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION"] = "python"
+
+# Force reload of protobuf modules to ensure the setting is respected
+for module_name in list(sys.modules.keys()):
+    if (
+        module_name.startswith("google.protobuf") or 
+        module_name.startswith("google._upb") or 
+        module_name.startswith("google.protobuf.internal") or
+        module_name.startswith("google.protobuf.pyext")
+    ):
+        sys.modules.pop(module_name, None)
 
 import streamlit as st
 import tempfile
