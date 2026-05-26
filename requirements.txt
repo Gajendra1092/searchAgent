@@ -1,0 +1,13 @@
+streamlit
+langchain
+langchain-google-genai
+langchain-community
+pypdf
+python-dotenv
+langchain-core
+langchain-chroma
+docx2txt
+duckduckgo-search
+ddgs
+rank_bm25
+flashrank

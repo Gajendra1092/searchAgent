@@ -1,0 +1,24 @@
+# Credentials
+.env
+.env.*
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.venv/
+venv/
+env/
+
+# Project local storage
+chroma_db/
+temp_uploads/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Agentic tool files
+.antigravitycli/
