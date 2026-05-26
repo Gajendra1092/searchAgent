@@ -11,3 +11,4 @@ duckduckgo-search
 ddgs
 rank_bm25
 flashrank
+protobuf==4.25.3
