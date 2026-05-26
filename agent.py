@@ -34,7 +34,7 @@ load_dotenv()
 embeddings = GoogleGenerativeAIEmbeddings(model="models/gemini-embedding-001")
 
 # Global Vector Store (Chroma)
-PERSIST_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "chroma_db")
+PERSIST_DIR = os.environ.get("PERSIST_DIR", os.path.join(os.path.dirname(os.path.abspath(__file__)), "chroma_db"))
 vector_store = Chroma(
     collection_name="search_agent",
     embedding_function=embeddings,
